@@ -172,15 +172,21 @@ $cart_count = getCartCount($pdo);
                         </a>
                     </li>
                     <li>
-                        <a href="commands.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span>Commandes</span>
+                        <a href="categories.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-tags"></i>
+                            <span>Catégories</span>
                         </a>
                     </li>
                     <li>
                         <a href="stock.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
                             <i class="fas fa-warehouse"></i>
                             <span>Stock</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="commands.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Commandes</span>
                         </a>
                     </li>
                     <li>
