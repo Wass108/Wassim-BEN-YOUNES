@@ -488,7 +488,7 @@ $cart_count = getCartCount($pdo);
                     <i class="fas fa-times text-2xl"></i>
                 </button>
             </div>
-            <form method="POST" class="p-6 space-y-4">
+            <form id="productForm" method="POST" class="p-6 space-y-4">
                 <input type="hidden" name="action" id="formAction" value="add">
                 <input type="hidden" name="produit_id" id="produitId">
                 
@@ -527,8 +527,20 @@ $cart_count = getCartCount($pdo);
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
                             <i class="fas fa-image mr-1"></i>Image
                         </label>
-                        <input type="text" name="image" id="produitImage" placeholder="URL image" 
-                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                        <div class="space-y-2">
+                            <input type="hidden" name="image" id="produitImage" value="">
+                            <div id="imagePreview" class="hidden mt-2">
+                                <img id="previewImg" src="" alt="Aperçu" class="max-w-32 max-h-32 rounded-lg border border-gray-300">
+                            </div>
+                            <div class="flex gap-2">
+                                <button type="button" id="importImageBtn" onclick="document.getElementById('imageFile').click()" 
+                                        class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg text-sm font-semibold transition-all duration-200">
+                                    <i class="fas fa-upload mr-1"></i>Importer
+                                </button>
+                                <span id="imageStatus" class="text-sm text-gray-500 self-center">Aucune image sélectionnée</span>
+                            </div>
+                            <input type="file" id="imageFile" accept="image/*" class="hidden">
+                        </div>
                     </div>
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
@@ -617,7 +629,10 @@ $cart_count = getCartCount($pdo);
             document.getElementById('produitId').value = '';
             document.getElementById('modalTitle').textContent = 'Ajouter un produit';
             document.getElementById('submitText').textContent = 'Ajouter le produit';
-            document.querySelector('form').reset();
+            document.getElementById('productForm').reset();
+            document.getElementById('imageFile').value = '';
+            updateImagePreview('');
+            updateImageStatus('');
         }
 
         function editProduct(produit) {
@@ -638,7 +653,70 @@ $cart_count = getCartCount($pdo);
             document.getElementById('produitPromo').checked = produit.promo == 1;
             document.getElementById('modalTitle').textContent = 'Modifier le produit';
             document.getElementById('submitText').textContent = 'Modifier le produit';
+            
+            // Mettre à jour l'aperçu et le statut si une image existe
+            updateImagePreview(produit.image || '');
+            updateImageStatus(produit.image || '');
         }
+
+        function updateImagePreview(imagePath) {
+            const previewDiv = document.getElementById('imagePreview');
+            const previewImg = document.getElementById('previewImg');
+            
+            if (imagePath && imagePath.trim() !== '') {
+                previewImg.src = imagePath;
+                previewDiv.classList.remove('hidden');
+            } else {
+                previewDiv.classList.add('hidden');
+            }
+        }
+
+        function updateImageStatus(imagePath) {
+            const status = document.getElementById('imageStatus');
+            if (imagePath && imagePath.trim() !== '') {
+                status.textContent = 'Image prête à être enregistrée';
+            } else {
+                status.textContent = 'Aucune image sélectionnée';
+            }
+        }
+
+        document.getElementById('imageFile').addEventListener('change', async function() {
+            const file = this.files[0];
+            if (!file) {
+                return;
+            }
+
+            const importBtn = document.getElementById('importImageBtn');
+            const originalText = importBtn.innerHTML;
+            importBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>Importation...';
+            importBtn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('image_file', file);
+
+            try {
+                const response = await fetch('import_image.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    document.getElementById('produitImage').value = result.image_path;
+                    updateImagePreview(result.image_path);
+                    updateImageStatus(result.image_path);
+                    alert('Image importée avec succès !');
+                } else {
+                    alert('Erreur lors de l\'importation : ' + result.error);
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                alert('Erreur lors de l\'importation de l\'image.');
+            } finally {
+                importBtn.innerHTML = originalText;
+                importBtn.disabled = false;
+            }
+        });
     </script>
 </body>
 </html>
