@@ -68,6 +68,7 @@ require_once 'db/db.php';
     </style>
 </head>
 <body class="bg-primary text-light">
+    <?php include 'ia/chatbot_widget.php'; ?>
 
     <!-- Hero Section -->
     <section class="relative h-screen bg-[url('image/showroom_bg.jpg')] bg-cover bg-center">
@@ -366,89 +367,7 @@ require_once 'db/db.php';
         </div>
     </footer>
 
-    <!-- ================================================== -->
-    <!-- ASSISTANT IA RÉVOLUTIONNAIRE (WIDGET + INTERFACE) -->
-    <!-- ================================================== -->
-    
-    <!-- 1. Widget Flottant avec Bulle d'accueil -->
-    <div id="ai-widget-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end space-y-4">
-        
-        <!-- Bulle de dialogue initiale -->
-        <div id="ai-bubble" class="hidden md:flex items-center space-x-2 bg-white text-gray-800 px-4 py-3 rounded-2xl shadow-lg cursor-pointer hover:bg-gray-100 transition group max-w-xs" onclick="toggleAI()">
-            <div class="bg-secondary text-black p-2 rounded-full font-bold text-xs">IA</div>
-            <div class="text-sm font-medium">
-                <span class="text-gray-500">Conseiller Souilem</span><br>
-                <span class="text-primary font-bold">Besoin d'aide pour choisir ?</span>
-            </div>
-            <span class="absolute -top-1 -right-1 flex h-3 w-3">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-        </div>
-
-        <!-- Bouton Principal (Ampoule) -->
-        <button id="main-ai-btn" onclick="toggleAI()" class="relative bg-primary border-2 border-secondary text-white p-5 rounded-full shadow-2xl hover:bg-zinc-800 transition transform hover:scale-110 duration-300 group">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary transition-transform group-hover:rotate-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-            <span class="absolute inset-0 rounded-full border-2 border-secondary opacity-0 group-hover:opacity-100 animate-ping-slow"></span>
-        </button>
-    </div>
-
-    <!-- 2. Interface de Chat (Design Glassmorphism) -->
-    <div id="ai-chat-interface" class="hidden fixed bottom-28 right-6 w-[350px] h-[500px] glass-effect rounded-3xl shadow-2xl border border-zinc-700 z-50 flex flex-col overflow-hidden transition-all duration-500 transform scale-95 opacity-0">
-        
-        <!-- Header Futuriste -->
-        <div class="relative p-5 border-b border-zinc-700 flex items-center space-x-3">
-            <div class="relative">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-                    <span class="text-white font-bold text-lg">💡</span>
-                </div>
-                <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-zinc-900"></div>
-            </div>
-            <div>
-                <h3 class="text-white font-bold text-lg tracking-wide">Assistant IA</h3>
-                <p class="text-xs text-gray-400">Expert en éclairage</p>
-            </div>
-            <button onclick="toggleAI()" class="absolute right-4 text-gray-500 hover:text-white transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
-
-        <!-- Zone de Messages -->
-        <div id="chat-area" class="flex-1 p-4 overflow-y-auto space-y-4 chat-scroll">
-            <div class="flex items-end gap-3">
-                <div class="w-8 h-8 rounded-full bg-secondary flex items-center justify-center flex-shrink-0 text-black text-sm">IA</div>
-                <div class="bg-zinc-800 text-gray-200 px-4 py-3 rounded-2xl rounded-bl-none max-w-[80%] text-sm leading-relaxed shadow-md">
-                    Bonjour ! Je suis votre assistant virtuel <span class="text-secondary font-bold">Souilem Lighting</span>. 
-                    <br><br>Je peux vous aider à trouver le lustre idéal ou calculer l'éclairage nécessaire pour votre pièce. Que recherchez-vous ?
-                </div>
-            </div>
-        </div>
-
-        <!-- Suggestions Rapides -->
-        <div class="px-4 pb-2 flex gap-2 overflow-x-auto">
-             <button onclick="askAI('Je cherche un lustre moderne')" class="text-xs whitespace-nowrap bg-zinc-700 hover:bg-secondary hover:text-black text-white px-3 py-1 rounded-full transition">Lustre moderne</button>
-             <button onclick="askAI('Je cherche des spots')" class="text-xs whitespace-nowrap bg-zinc-700 hover:bg-secondary hover:text-black text-white px-3 py-1 rounded-full transition">Spots</button>
-             <button onclick="askAI('Conseil éclairage salon')" class="text-xs whitespace-nowrap bg-zinc-700 hover:bg-secondary hover:text-black text-white px-3 py-1 rounded-full transition">Conseils</button>
-        </div>
-
-        <!-- Input Zone -->
-        <div class="p-4 bg-zinc-900/50 border-t border-zinc-700">
-            <form id="ai-form" class="flex items-center gap-2 bg-zinc-800 rounded-full px-4 py-2">
-                <input type="text" id="ai-input" placeholder="Posez votre question..." class="flex-1 bg-transparent text-white text-sm focus:outline-none placeholder-gray-500">
-                <button type="submit" class="bg-secondary text-black p-2 rounded-full hover:bg-yellow-500 transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-                    </svg>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Scripts Globaux -->
+    <script src="js/home.js"></script>
     <script>
         // 1. Menu Mobile
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
