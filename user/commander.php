@@ -88,6 +88,7 @@ $cart_count = getCartCount($pdo);
     </script>
 </head>
 <body class="bg-gray-50">
+    <?php include '../ia/chatbot_widget.php'; ?>
  <section class="relative min-h-screen bg-[url('../image/showroom_bg.jpg')] bg-cover bg-center flex flex-col">
                 <div class="absolute inset-0 bg-black/700 bg-gradient-to-b from-black/50 to-black/90"></div>        <div class="absolute inset-0 hero-overlay"></div>
         <header class="relative z-50 text-white">

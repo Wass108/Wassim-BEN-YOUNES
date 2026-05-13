@@ -14,7 +14,8 @@
     const suggestions = document.getElementById('chatbot-suggestions');
 
     // URL de l'API (adapter selon votre structure)
-    const API_URL = 'ia/chatbot_api.php';
+    const basePath = window.chatbotBasePath || '';
+    const API_URL = basePath + 'ia/chatbot_api.php';
 
     // Ouvrir/fermer le chat
     toggleBtn.addEventListener('click', () => {

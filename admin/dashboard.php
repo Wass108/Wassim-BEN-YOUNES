@@ -135,12 +135,6 @@ $cart_count = getCartCount($pdo);
                         </a>
                     </li>
                     <li>
-                        <a href="ia_analytics.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
-                            <i class="fas fa-box"></i>
-                            <span>Analytics IA</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="categories.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
                             <i class="fas fa-tags"></i>
                             <span>Catégories</span>

@@ -1,10 +1,14 @@
 <?php
 /**
  * Widget Chatbot - À inclure dans toutes les pages
- * Usage : <?php include 'ia/chatbot_widget.php'; ?>
+ * Détecte automatiquement le contexte pour ajuster les chemins des ressources
  */
+
+// Déterminer le chemin de base selon le contexte
+$script_path = $_SERVER['SCRIPT_NAME'] ?? '';
+$base_path = strpos($script_path, '/user/') !== false ? '../' : '';
 ?>
-<link rel="stylesheet" href="css/chatbot.css">
+<link rel="stylesheet" href="<?php echo $base_path; ?>css/chatbot.css">
 
 <!-- Bouton flottant -->
 <div id="chatbot-container">
@@ -57,4 +61,8 @@
     </div>
 </div>
 
-<script src="js/chatbot.js"></script>
+<script>
+    // Injecter le chemin de base pour que chatbot.js puisse accéder à l'API
+    window.chatbotBasePath = '<?php echo $base_path; ?>';
+</script>
+<script src="<?php echo $base_path; ?>js/chatbot.js"></script>
