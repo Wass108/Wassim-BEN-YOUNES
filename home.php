@@ -58,6 +58,7 @@ require_once 'db/db.php';
     </style>
 </head>
 <body class="bg-primary text-light">
+    <?php include 'ia/chatbot_widget.php'; ?>
 
     <!-- Hero Section avec fond sombre pour contraste -->
     <section class="relative h-screen bg-[url('image/showroom_bg.jpg')] bg-cover bg-center">
@@ -367,16 +368,6 @@ require_once 'db/db.php';
             </div>
         </div>
     </footer>
-
-    <!-- Bouton Chatbot IA (Fonctionnalité clé du cahier des charges) -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button id="chatbot-btn" class="ia-btn bg-secondary text-black p-4 rounded-full shadow-2xl hover:bg-yellow-400 transition transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-            </svg>
-        </button>
-    </div>
-
     <script src="js/home.js"></script>
     <script>
         // Simple toggle pour le menu mobile
