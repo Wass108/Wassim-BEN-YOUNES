@@ -11,3 +11,4 @@ const mobileMenuBtn = document.getElementById('mobileMenuBtn');
                     mobileMenu.classList.add('hidden');
                 });
             });
+                    
