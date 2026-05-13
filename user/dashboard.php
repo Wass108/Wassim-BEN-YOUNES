@@ -25,6 +25,7 @@ $commandes = $stmt->fetchAll();
 
 $cart_count = getCartCount($pdo);
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
