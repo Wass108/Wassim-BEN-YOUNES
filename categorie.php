@@ -105,7 +105,7 @@ if (!$categorie) {
                     <!-- Image / Icône -->
                     <div class="relative h-48 bg-zinc-800 flex items-center justify-center overflow-hidden">
                         <?php if (!empty($produit['image'])): ?>
-                            <img src="uploads/<?php echo $produit['image']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="">
+                            <img src="<?php echo htmlspecialchars($produit['image']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="">
                         <?php else: ?>
                             <div class="text-7xl text-gray-500 group-hover:scale-110 transition duration-500">
                                 <?php echo $product_icons[$index % count($product_icons)]; ?>

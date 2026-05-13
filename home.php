@@ -235,7 +235,7 @@ require_once 'db/db.php';
 
                     <div class="relative h-64 bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center overflow-hidden">
                         <?php if (!empty($produit['image'])): ?>
-                            <img src="uploads/<?php echo $produit['image']; ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="">
+                            <img src="<?php echo htmlspecialchars($produit['image']); ?>" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" alt="">
                         <?php else: ?>
                             <div class="text-8xl text-gray-400 group-hover:scale-110 transition duration-500">
                                 <?php echo $product_icons[$index % count($product_icons)]; ?>
