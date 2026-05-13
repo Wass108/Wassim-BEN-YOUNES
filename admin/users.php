@@ -162,7 +162,7 @@ $cart_count = getCartCount($pdo);
                     </div>
                 </a>
                 <ul class="hidden lg:flex items-center space-x-1">
-                    <li>
+                  <li>
                         <a href="../home.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
                             <i class="fas fa-home"></i>
                             <span>Site</span>
@@ -181,12 +181,29 @@ $cart_count = getCartCount($pdo);
                         </a>
                     </li>
                     <li>
+                        <a href="categories.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-tags"></i>
+                            <span>Catégories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="stock.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-warehouse"></i>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="commands.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
                             <i class="fas fa-shopping-cart"></i>
                             <span>Commandes</span>
                         </a>
                     </li>
                     <li>
+                        <a href="factures.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Factures</span>
+                        </a>
+                    </li>
                         <a href="users.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 text-primary transition-all duration-200 font-medium">
                             <i class="fas fa-users"></i>
                             <span>Utilisateurs</span>

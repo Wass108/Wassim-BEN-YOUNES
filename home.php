@@ -369,11 +369,6 @@ require_once 'db/db.php';
 
     <script src="js/home.js"></script>
     <script>
-        // 1. Menu Mobile
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
-        });
-
         // 2. Filtres Produits
         const filterButtons = document.querySelectorAll('.filter-btn');
         const productCards = document.querySelectorAll('.product-card');
