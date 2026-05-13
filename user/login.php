@@ -1,84 +1,52 @@
-
-
-
-
-
-
-
-
 <?php
 require_once '../db/db.php';
 
-// Rediriger si déjà connecté
-if (isLoggedIn()) {
-    header('Location: dashboard.php');
-    exit;
-}
+$error = '';
+$success = '';
 
- $errors = [];
- $email = '';
-
-// Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Vérification CSRF
-    checkCSRF();
-
-    $email = sanitize($_POST['email'] ?? '');
+    $username = sanitize($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
-
-    // Vérification Rate Limiting
-    if (isRateLimited($pdo)) {
-        $errors[] = "Trop de tentatives de connexion. Veuillez réessayer dans 15 minutes.";
+    
+    if (empty($username) || empty($password)) {
+        $error = "Veuillez remplir tous les champs.";
     } else {
-        if (empty($email) || empty($password)) {
-            $errors[] = "Tous les champs sont requis.";
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
+        $stmt->execute([$username, $username]);
+        $user = $stmt->fetch();
+        
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['role'] = $user['role'] ?? 'user';
+            
+            header('Location: dashboard.php');
+            exit;
         } else {
-            // Recherche l'utilisateur
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-            $stmt->execute([$email]);
-            $user = $stmt->fetch();
-
-            if ($user && password_verify($password, $user['password'])) {
-                // Connexion réussie
-                logLoginAttempt($pdo, $email, true);
-                
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['nom'] = $user['nom'];
-                $_SESSION['role'] = $user['role'];
-                
-                // Régénérer l'ID de session pour la sécurité
-                session_regenerate_id(true);
-
-                // Redirection selon le rôle
-                if (isAdmin()) {
-                    header('Location: ../admin/dashboard.php');
-                } else {
-                    header('Location: dashboard.php');
-                }
-                exit;
-            } else {
-                // Échec connexion
-                logLoginAttempt($pdo, $email, false);
-                $errors[] = "Email ou mot de passe incorrect.";
-            }
+            $error = "Identifiants incorrects.";
         }
     }
 }
-?>
 
+$cart_count = getCartCount($pdo);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion - SOUILEM LIGHTING</title>
+    <link rel="stylesheet" href="css/login.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a1a1a',
-                        secondary: '#D4AF37',
+                        primary: '#8B4513',
+                        secondary: '#D2691E',
+                        accent: '#F4A460',
                     }
                 }
             }
