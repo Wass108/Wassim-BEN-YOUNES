@@ -44,8 +44,12 @@ $cart_count = getCartCount($pdo);
         }
     </script>
 </head>
+    <?php include '../ia/chatbot_widget.php'; ?>
+
 <body class="bg-gray-50">
-    <section class="relative min-h-screen bg-[url('../image/bg.png')] bg-cover bg-center flex flex-col">
+    <section class="relative min-h-screen bg-[url('../image/showroom_bg.jpg')] bg-cover bg-center flex flex-col">
+                <div class="absolute inset-0 bg-black/700 bg-gradient-to-b from-black/50 to-black/90"></div>
+
         <div class="absolute inset-0 hero-overlay"></div>
         <header class="relative z-50 text-white">
         <div class="container mx-auto px-4">
@@ -139,7 +143,7 @@ $cart_count = getCartCount($pdo);
                                         echo implode(' • ', $details);
                                         if (!empty($details)) echo ' • ';
                                     ?>
-                                    <span class="text-secondary font-semibold"><?php echo number_format($item['prix'], 2, ',', ' '); ?> €</span> l'unité
+                                    <span class="text-secondary font-semibold"><?php echo number_format($item['prix'], 2, ',', ' '); ?> DT</span> l'unité
                                 </p>
                             </div>
                             <div class="flex flex-col items-center gap-3">
@@ -161,7 +165,7 @@ $cart_count = getCartCount($pdo);
                                     </form>
                                 </div>
                                 <div class="font-bold text-xl text-secondary">
-                                    <?php echo number_format($item['prix'] * $item['quantite'], 2, ',', ' '); ?> €
+                                    <?php echo number_format($item['prix'] * $item['quantite'], 2, ',', ' '); ?> DT
                                 </div>
 
                                 <form method="POST" action="update_panier.php" class="inline">
@@ -188,7 +192,7 @@ $cart_count = getCartCount($pdo);
                         <div class="space-y-3 mb-4 text-sm">
                             <div class="flex justify-between text-gray-700">
                                 <span>Sous-total :</span>
-                                <span class="font-semibold"><?php echo number_format($total, 2, ',', ' '); ?> €</span>
+                                <span class="font-semibold"><?php echo number_format($total, 2, ',', ' '); ?> DT</span>
                             </div>
                             <div class="flex justify-between text-gray-700">
                                 <span>Livraison :</span>
@@ -197,7 +201,7 @@ $cart_count = getCartCount($pdo);
                             <div class="border-t-2 border-primary pt-3">
                                 <div class="flex justify-between items-center">
                                     <span class="text-xl font-bold text-primary">Total :</span>
-                                    <span class="text-2xl font-bold text-secondary"><?php echo number_format($total, 2, ',', ' '); ?> €</span>
+                                    <span class="text-2xl font-bold text-secondary"><?php echo number_format($total, 2, ',', ' '); ?> DT</span>
                                 </div>
                             </div>
                         </div>

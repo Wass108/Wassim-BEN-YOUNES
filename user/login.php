@@ -1,30 +1,32 @@
 <?php
 require_once '../db/db.php';
 
-$error = '';
-$success = '';
+$errors = [];
+$email = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = sanitize($_POST['username'] ?? '');
+    checkCSRF();
+
+    $email = sanitize($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
-    
-    if (empty($username) || empty($password)) {
-        $error = "Veuillez remplir tous les champs.";
+
+    if (empty($email) || empty($password)) {
+        $errors[] = "Veuillez remplir tous les champs.";
     } else {
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
-        $stmt->execute([$username, $username]);
+        $stmt->execute([$email, $email]);
         $user = $stmt->fetch();
-        
+
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
+            $_SESSION['username'] = $user['username'] ?? $user['email'];
             $_SESSION['email'] = $user['email'];
-            $_SESSION['role'] = $user['role'] ?? 'user';
-            
+            $_SESSION['role'] = $user['role'] ?? 'client';
+
             header('Location: dashboard.php');
             exit;
         } else {
-            $error = "Identifiants incorrects.";
+            $errors[] = "Identifiants incorrects.";
         }
     }
 }
