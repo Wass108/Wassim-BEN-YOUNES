@@ -48,9 +48,11 @@ $cart_count = getCartCount($pdo);
         }
     </script>
 </head>
+    <?php include '../ia/chatbot_widget.php'; ?>
+
 <body class="bg-gray-50">
-    <section class="relative min-h-screen bg-[url('../image/bg.png')] bg-cover bg-center flex flex-col">
-        <div class="absolute inset-0 hero-overlay"></div>
+ <section class="relative min-h-screen bg-[url('../image/showroom_bg.jpg')] bg-cover bg-center flex flex-col">
+                <div class="absolute inset-0 bg-black/700 bg-gradient-to-b from-black/50 to-black/90"></div>        <div class="absolute inset-0 hero-overlay"></div>
         <header class="relative z-50 text-white">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -212,7 +214,7 @@ $cart_count = getCartCount($pdo);
                             <tr class="table-row-hover">
                                 <td class="px-3 py-2 font-semibold text-gray-900">#<?php echo $commande['id']; ?></td>
                                 <td class="px-3 py-2 text-gray-700"><?php echo date('d/m/Y à H:i', strtotime($commande['date_commande'])); ?></td>
-                                <td class="px-3 py-2 font-bold text-secondary"><?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> €</td>
+                                <td class="px-3 py-2 font-bold text-secondary"><?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> DT</td>
                                 <td class="px-3 py-2">
                                     <?php
                                     $statut_config = [

@@ -32,6 +32,7 @@ if (!$categorie) {
 // Compteur panier
  $cart_count = getCartCount($pdo);
 ?>
+    <?php include 'ia/chatbot_widget.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

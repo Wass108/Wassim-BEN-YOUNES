@@ -221,7 +221,7 @@ $cart_count = getCartCount($pdo);
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                        <a href="dashboard.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 text-primary transition-all duration-200 font-medium">
                             <i class="fas fa-chart-line"></i>
                             <span>Tableau de bord</span>
                         </a>
@@ -233,7 +233,13 @@ $cart_count = getCartCount($pdo);
                         </a>
                     </li>
                     <li>
-                        <a href="stock.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 text-primary transition-all duration-200 font-medium">
+                        <a href="categories.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-tags"></i>
+                            <span>Catégories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="stock.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
                             <i class="fas fa-warehouse"></i>
                             <span>Stock</span>
                         </a>
@@ -242,6 +248,12 @@ $cart_count = getCartCount($pdo);
                         <a href="commands.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
                             <i class="fas fa-shopping-cart"></i>
                             <span>Commandes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="factures.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Factures</span>
                         </a>
                     </li>
                     <li>
@@ -262,8 +274,79 @@ $cart_count = getCartCount($pdo);
                         <i class="fas fa-sign-out-alt"></i>
                         <span>Déconnexion</span>
                     </a>
+                    <button id="mobileMenuBtn" class="lg:hidden text-gray-700 focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
+            <nav id="mobileMenu" class="hidden lg:hidden pb-4 border-t border-gray-200 mt-2 pt-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="../home.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-home w-5"></i>
+                            <span>Site</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard.php" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-chart-line w-5"></i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="products.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-box w-5"></i>
+                            <span>Produits</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="categories.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-tags w-5"></i>
+                            <span>Catégories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="stock.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-warehouse w-5"></i>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="commands.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-shopping-cart w-5"></i>
+                            <span>Commandes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="factures.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-file-invoice w-5"></i>
+                            <span>Factures</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="users.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-users w-5"></i>
+                            <span>Utilisateurs</span>
+                        </a>
+                    </li>
+                    <li class="pt-2 border-t border-gray-200">
+                        <div class="flex items-center space-x-3 px-4 py-2 bg-gray-50 rounded-lg mb-2">
+                            <div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-semibold"><?php echo strtoupper(substr($_SESSION['username'], 0, 1)); ?></span>
+                            </div>
+                            <span class="text-sm font-medium text-gray-700"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="../user/logout.php" class="flex items-center justify-center space-x-2 px-5 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 font-medium shadow-sm">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </nav>
 

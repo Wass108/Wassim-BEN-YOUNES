@@ -202,7 +202,7 @@ $cart_count = getCartCount($pdo);
                         <div>
                             <p class="text-sm font-medium text-gray-600 mb-1">Montant Total</p>
                             <p class="text-3xl font-bold text-green-600">
-                                <?php echo number_format($stats['montant_total'] ?? 0, 2, ',', ' '); ?> €
+                                <?php echo number_format($stats['montant_total'] ?? 0, 2, ',', ' '); ?> DT
                             </p>
                         </div>
                         <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center">
@@ -251,7 +251,7 @@ $cart_count = getCartCount($pdo);
                                 </td>
                                 <td class="px-6 py-4">
                                     <span class="font-bold text-lg text-orange-600">
-                                        <?php echo number_format($cmd['montant_total'], 2, ',', ' '); ?> €
+                                        <?php echo number_format($cmd['montant_total'], 2, ',', ' '); ?> DT
                                     </span>
                                 </td>
                                 <td class="px-6 py-4">
@@ -364,9 +364,9 @@ $cart_count = getCartCount($pdo);
                                 <td class="px-4 py-3 text-gray-700"><?php echo htmlspecialchars($item['reference_produit'] ?? 'N/A'); ?></td>
                                 <td class="px-4 py-3 text-gray-700"><?php echo htmlspecialchars($item['produit_nom']); ?></td>
                                 <td class="px-4 py-3 text-center font-bold"><?php echo $item['quantite']; ?></td>
-                                <td class="px-4 py-3 text-right font-bold"><?php echo number_format($item['prix_unitaire'], 2, ',', ' '); ?> €</td>
+                                <td class="px-4 py-3 text-right font-bold"><?php echo number_format($item['prix_unitaire'], 2, ',', ' '); ?> DT</td>
                                 <td class="px-4 py-3 text-right font-bold">
-                                    <?php echo number_format($item['prix_unitaire'] * $item['quantite'], 2, ',', ' '); ?> €
+                                    <?php echo number_format($item['prix_unitaire'] * $item['quantite'], 2, ',', ' '); ?> DT
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -380,15 +380,15 @@ $cart_count = getCartCount($pdo);
                     <div class="space-y-3">
                         <div class="flex justify-between pb-2 border-b border-gray-300">
                             <span class="text-gray-600">Sous-total:</span>
-                            <span class="font-bold"><?php echo number_format($commande_details['montant_total'] * 0.9, 2, ',', ' '); ?> €</span>
+                            <span class="font-bold"><?php echo number_format($commande_details['montant_total'] * 0.9, 2, ',', ' '); ?> DT</span>
                         </div>
                         <div class="flex justify-between pb-2 border-b border-gray-300">
                             <span class="text-gray-600">TVA (20%):</span>
-                            <span class="font-bold"><?php echo number_format($commande_details['montant_total'] * 0.1, 2, ',', ' '); ?> €</span>
+                            <span class="font-bold"><?php echo number_format($commande_details['montant_total'] * 0.1, 2, ',', ' '); ?> DT</span>
                         </div>
                         <div class="flex justify-between pb-2 pt-2 bg-gradient-to-r from-primary to-blue-600 text-white px-4 py-2 rounded-lg">
                             <span class="font-bold text-lg">Montant Total:</span>
-                            <span class="font-bold text-xl"><?php echo number_format($commande_details['montant_total'], 2, ',', ' '); ?> €</span>
+                            <span class="font-bold text-xl"><?php echo number_format($commande_details['montant_total'], 2, ',', ' '); ?> DT</span>
                         </div>
                     </div>
                 </div>

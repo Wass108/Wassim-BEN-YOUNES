@@ -342,7 +342,7 @@ $cart_count = getCartCount($pdo);
                     <div>
                         <p class="text-sm font-medium text-gray-600 mb-1">CA Total</p>
                         <p class="text-2xl font-bold text-purple-600">
-                            <?php echo number_format($total_depenses, 0, ',', ' '); ?>€
+                            <?php echo number_format($total_depenses, 0, ',', ' '); ?>DT
                         </p>
                     </div>
                     <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center">
@@ -424,7 +424,7 @@ $cart_count = getCartCount($pdo);
                             </td>
                             <td class="px-6 py-4">
                                 <span class="font-bold text-lg bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                                    <?php echo number_format($user['total_depense'], 2, ',', ' '); ?> €
+                                    <?php echo number_format($user['total_depense'], 2, ',', ' '); ?> DT
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-center">

@@ -88,8 +88,8 @@ $cart_count = getCartCount($pdo);
     </script>
 </head>
 <body class="bg-gray-50">
-    <section class="relative min-h-screen bg-[url('../image/bg.png')] bg-cover bg-center flex flex-col">
-        <div class="absolute inset-0 hero-overlay"></div>
+ <section class="relative min-h-screen bg-[url('../image/showroom_bg.jpg')] bg-cover bg-center flex flex-col">
+                <div class="absolute inset-0 bg-black/700 bg-gradient-to-b from-black/50 to-black/90"></div>        <div class="absolute inset-0 hero-overlay"></div>
         <header class="relative z-50 text-white">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -162,7 +162,7 @@ $cart_count = getCartCount($pdo);
                     <h2 class="text-xl md:text-2xl font-bold text-green-600 mb-3">Commande validée !</h2>
                     <p class="text-gray-700 text-sm md:text-base mb-2">Votre commande a été enregistrée avec succès.</p>
                     <p class="text-gray-600 text-sm mb-1">Numéro de commande : <span class="font-bold text-primary">#<?php echo $commande_id; ?></span></p>
-                    <p class="text-gray-600 mb-6 text-sm">Montant total : <span class="font-bold text-secondary text-lg md:text-xl"><?php echo number_format($total, 2, ',', ' '); ?> €</span></p>
+                    <p class="text-gray-600 mb-6 text-sm">Montant total : <span class="font-bold text-secondary text-lg md:text-xl"><?php echo number_format($total, 2, ',', ' '); ?> DT</span></p>
 
                     <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-6 animate-fadeInUp delay-200">
                         <p class="text-amber-800 text-sm">
@@ -220,9 +220,9 @@ $cart_count = getCartCount($pdo);
                                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-200 pb-4 transition hover:bg-amber-50/50 p-2 rounded-lg">
                                     <div class="mb-2 md:mb-0">
                                         <p class="font-semibold text-gray-800 text-base md:text-lg"><?php echo htmlspecialchars($item['nom']); ?></p>
-                                        <p class="text-sm text-gray-600">Quantité : <span class="font-semibold"><?php echo $item['quantite']; ?></span> × <?php echo number_format($item['prix'], 2, ',', ' '); ?> €</p>
+                                        <p class="text-sm text-gray-600">Quantité : <span class="font-semibold"><?php echo $item['quantite']; ?></span> × <?php echo number_format($item['prix'], 2, ',', ' '); ?> DT</p>
                                     </div>
-                                    <p class="font-bold text-secondary text-lg md:text-xl"><?php echo number_format($item['prix'] * $item['quantite'], 2, ',', ' '); ?> €</p>
+                                    <p class="font-bold text-secondary text-lg md:text-xl"><?php echo number_format($item['prix'] * $item['quantite'], 2, ',', ' '); ?> DT</p>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -239,7 +239,7 @@ $cart_count = getCartCount($pdo);
                         <div class="space-y-3 md:space-y-4 mb-6">
                             <div class="flex justify-between text-gray-700 text-sm md:text-base">
                                 <span>Sous-total :</span>
-                                <span class="font-semibold"><?php echo number_format($total, 2, ',', ' '); ?> €</span>
+                                <span class="font-semibold"><?php echo number_format($total, 2, ',', ' '); ?> DT</span>
                             </div>
                             <div class="flex justify-between text-gray-700 text-sm md:text-base">
                                 <span>Livraison :</span>
@@ -248,7 +248,7 @@ $cart_count = getCartCount($pdo);
                             <div class="border-t-2 border-primary pt-3 md:pt-4">
                                 <div class="flex justify-between items-center">
                                     <span class="text-lg md:text-xl font-bold text-primary">Total :</span>
-                                    <span class="text-2xl md:text-3xl font-bold text-secondary"><?php echo number_format($total, 2, ',', ' '); ?> €</span>
+                                    <span class="text-2xl md:text-3xl font-bold text-secondary"><?php echo number_format($total, 2, ',', ' '); ?> DT</span>
                                 </div>
                             </div>
                         </div>

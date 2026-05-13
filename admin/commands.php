@@ -171,7 +171,7 @@ if (isset($_GET['details'])) {
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans antialiased flex flex-col">
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm backdrop-blur-lg bg-opacity-90">
-        <div class="container mx-auto px-6 lg:px-8">
+                <div class="container mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <a href="dashboard.php" class="flex items-center space-x-3 group">
                     <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
@@ -189,7 +189,7 @@ if (isset($_GET['details'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                        <a href="dashboard.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 text-primary transition-all duration-200 font-medium">
                             <i class="fas fa-chart-line"></i>
                             <span>Tableau de bord</span>
                         </a>
@@ -201,9 +201,27 @@ if (isset($_GET['details'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="commands.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 text-primary transition-all duration-200 font-medium">
+                        <a href="categories.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-tags"></i>
+                            <span>Catégories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="stock.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-warehouse"></i>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="commands.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg bg-blue-50 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
                             <i class="fas fa-shopping-cart"></i>
                             <span>Commandes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="factures.php" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-gray-600 hover:text-primary hover:bg-blue-50 transition-all duration-200 font-medium">
+                            <i class="fas fa-file-invoice"></i>
+                            <span>Factures</span>
                         </a>
                     </li>
                     <li>
@@ -240,7 +258,7 @@ if (isset($_GET['details'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="dashboard.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                        <a href="dashboard.php" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-primary rounded-lg transition-all duration-200 font-medium">
                             <i class="fas fa-chart-line w-5"></i>
                             <span>Tableau de bord</span>
                         </a>
@@ -252,9 +270,27 @@ if (isset($_GET['details'])) {
                         </a>
                     </li>
                     <li>
-                        <a href="commands.php" class="flex items-center space-x-3 px-4 py-3 bg-blue-50 text-primary rounded-lg transition-all duration-200 font-medium">
+                        <a href="categories.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-tags w-5"></i>
+                            <span>Catégories</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="stock.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-warehouse w-5"></i>
+                            <span>Stock</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="commands.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
                             <i class="fas fa-shopping-cart w-5"></i>
                             <span>Commandes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="factures.php" class="flex items-center space-x-3 px-4 py-3 text-gray-600 hover:bg-blue-50 hover:text-primary rounded-lg transition-all duration-200 font-medium">
+                            <i class="fas fa-file-invoice w-5"></i>
+                            <span>Factures</span>
                         </a>
                     </li>
                     <li>
@@ -369,7 +405,7 @@ if (isset($_GET['details'])) {
                 <div class="flex items-center justify-between">
                     <div>
                         <p class="text-orange-100 text-sm font-medium mb-1">Total Ventes</p>
-                        <p class="text-2xl font-bold"><?php echo number_format($chiffre_affaires, 0, ',', ' '); ?> €</p>
+                        <p class="text-2xl font-bold"><?php echo number_format($chiffre_affaires, 0, ',', ' '); ?> DT</p>
                     </div>
                     <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
                         <i class="fas fa-euro-sign text-white text-2xl"></i>
@@ -460,7 +496,7 @@ if (isset($_GET['details'])) {
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="font-bold text-lg text-orange-600">
-                                        <?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> €
+                                        <?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> DT
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
@@ -642,7 +678,7 @@ if (isset($_GET['details'])) {
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-600 mb-1">Montant Total</p>
-                                        <p class="font-bold text-orange-600 text-xl">${parseFloat(commande.montant_total).toFixed(2)} €</p>
+                                        <p class="font-bold text-orange-600 text-xl">${parseFloat(commande.montant_total).toFixed(2)} DT</p>
                                     </div>
                                     <div>
                                         <p class="text-sm text-gray-600 mb-1">Statut</p>

@@ -344,7 +344,7 @@ $cart_count = getCartCount($pdo);
                 </div>
                 <div class="mb-3">
                     <p class="text-orange-100 text-sm font-medium mb-1">Chiffre d'affaires</p>
-                    <h3 class="text-3xl font-bold"><?php echo number_format($chiffre_affaires, 0, ',', ' '); ?> €</h3>
+                    <h3 class="text-3xl font-bold"><?php echo number_format($chiffre_affaires, 0, ',', ' '); ?> DT</h3>
                 </div>
                 <p class="text-sm text-orange-100 opacity-90">Total des ventes réalisées</p>
             </div>
@@ -553,7 +553,7 @@ $cart_count = getCartCount($pdo);
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="font-bold text-lg bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                                        <?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> €
+                                        <?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> DT
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">

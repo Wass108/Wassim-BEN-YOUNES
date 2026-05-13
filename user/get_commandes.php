@@ -45,7 +45,7 @@ ob_start();
                 <tr class="table-row-hover">
                     <td class="px-3 py-2 font-semibold text-gray-900">#<?php echo $commande['id']; ?></td>
                     <td class="px-3 py-2 text-gray-700"><?php echo date('d/m/Y à H:i', strtotime($commande['date_commande'])); ?></td>
-                    <td class="px-3 py-2 font-bold text-secondary"><?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> €</td>
+                    <td class="px-3 py-2 font-bold text-secondary"><?php echo number_format($commande['montant_total'], 2, ',', ' '); ?> DT</td>
                     <td class="px-3 py-2">
                         <?php
                         $config = $statut_config[$commande['statut']] ?? ['text' => $commande['statut'], 'class' => 'bg-gray-100 text-gray-800'];

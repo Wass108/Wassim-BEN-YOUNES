@@ -413,7 +413,7 @@ $cart_count = getCartCount($pdo);
                             </td>
                             <td class="px-6 py-4">
                                 <span class="font-bold text-lg text-orange-600">
-                                    <?php echo number_format($produit['prix'], 2, ',', ' '); ?> €
+                                    <?php echo number_format($produit['prix'], 2, ',', ' '); ?> DT
                                 </span>
                             </td>
                             <td class="px-6 py-4">
@@ -518,7 +518,7 @@ $cart_count = getCartCount($pdo);
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
                         <label class="block text-sm font-semibold text-gray-700 mb-2">
-                            <i class="fas fa-euro-sign mr-1"></i>Prix (€) *
+                            <i class="fas fa-euro-sign mr-1"></i>Prix (DT) *
                         </label>
                         <input type="number" name="prix" id="produitPrix" step="0.01" min="0" required 
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
