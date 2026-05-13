@@ -349,6 +349,54 @@ $cart_count = getCartCount($pdo);
                 <p class="text-sm text-orange-100 opacity-90">Total des ventes réalisées</p>
             </div>
         </div>
+        <!-- ============ SECTION IA ============ -->
+<div class="mb-10">
+    <div class="flex items-center mb-6">
+        <div class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center shadow-lg mr-4">
+            <i class="fas fa-robot text-white text-xl"></i>
+        </div>
+        <div>
+            <h3 class="text-2xl font-bold text-gray-900">Intelligence Artificielle</h3>
+            <p class="text-sm text-gray-500">Analyses et recommandations automatiques</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="../ia/recommendations.php" class="group bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <i class="fas fa-magic text-white text-2xl"></i>
+                </div>
+                <i class="fas fa-arrow-right text-xl opacity-70 group-hover:translate-x-2 transition-transform"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Recommandations IA</h4>
+            <p class="text-sm opacity-90">Produits à mettre en avant, promotions et cross-selling</p>
+        </a>
+
+        <a href="../ia/analyse_ventes.php" class="group bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <i class="fas fa-chart-line text-white text-2xl"></i>
+                </div>
+                <i class="fas fa-arrow-right text-xl opacity-70 group-hover:translate-x-2 transition-transform"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Analyse des ventes</h4>
+            <p class="text-sm opacity-90">Tendances, opportunités et prévisions IA</p>
+        </a>
+
+        <a href="../ia/prediction_stock.php" class="group bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl p-6 text-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-14 h-14 bg-white bg-opacity-20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <i class="fas fa-warehouse text-white text-2xl"></i>
+                </div>
+                <i class="fas fa-arrow-right text-xl opacity-70 group-hover:translate-x-2 transition-transform"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Prédiction Stock</h4>
+            <p class="text-sm opacity-90">Anticipation des ruptures et réapprovisionnement</p>
+        </a>
+    </div>
+</div>
+<!-- ============ FIN SECTION IA ============ -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 animate-fadeIn" style="animation-delay: 0.4s;">
                 <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
