@@ -30,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $prix = floatval($_POST['prix'] ?? 0);
         $type_eclairage = sanitize($_POST['type_eclairage'] ?? '');
         $couleur = sanitize($_POST['couleur'] ?? '');
+        $image = sanitize($_POST['image'] ?? '');
         $categorie_id = intval($_POST['categorie_id'] ?? 0);
         $stock = intval($_POST['stock'] ?? 0);
         $nouveau = isset($_POST['nouveau']) ? 1 : 0;
@@ -42,24 +43,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 if ($action === 'add') {
                     $stmt = $pdo->prepare("
-                        INSERT INTO produits (nom, reference_produit, description, prix, type_eclairage, couleur, categorie_id, stock, nouveau, promo, disponibilite) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        INSERT INTO produits (nom, reference_produit, description, prix, type_eclairage, couleur, image, categorie_id, stock, nouveau, promo, disponibilite) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ");
                     $disponibilite = ($stock > 0) ? 1 : 0;
-                    $stmt->execute([$nom, $reference_produit, $description, $prix, $type_eclairage, $couleur, $categorie_id, $stock, $nouveau, $promo, $disponibilite]);
+                    $stmt->execute([$nom, $reference_produit, $description, $prix, $type_eclairage, $couleur, $image, $categorie_id, $stock, $nouveau, $promo, $disponibilite]);
                     $message = "Produit ajouté avec succès !";
                     $message_type = 'success';
                 } else {
                     $produit_id = intval($_POST['produit_id'] ?? 0);
-                    $stmt = $pdo->prepare("
+                    $stmt = $pdo->prepare(" 
                         UPDATE produits 
-                        SET nom = ?, reference_produit = ?, description = ?, prix = ?, type_eclairage = ?, couleur = ?, categorie_id = ?, stock = ?, nouveau = ?, promo = ?, disponibilite = ?
+                        SET nom = ?, reference_produit = ?, description = ?, prix = ?, type_eclairage = ?, couleur = ?, image = ?, categorie_id = ?, stock = ?, nouveau = ?, promo = ?, disponibilite = ?
                         WHERE id = ?
                     ");
                     $disponibilite = ($stock > 0) ? 1 : 0;
-                    $stmt->execute([$nom, $reference_produit, $description, $prix, $type_eclairage, $couleur, $categorie_id, $stock, $nouveau, $promo, $disponibilite, $produit_id]);
-                    $message = "Produit modifié avec succès !";
-                    $message_type = 'success';
+                    $stmt->execute([$nom, $reference_produit, $description, $prix, $type_eclairage, $couleur, $image, $categorie_id, $stock, $nouveau, $promo, $disponibilite, $produit_id]);
                 }
                 
                 header('Location: products.php?success=' . urlencode($message));
@@ -392,7 +391,7 @@ $cart_count = getCartCount($pdo);
                         <tr class="hover:bg-blue-50 transition-colors duration-150">
                             <td class="px-6 py-4">
                                 <?php if (!empty($produit['image'])): ?>
-                                    <img src="<?php echo htmlspecialchars($produit['image']); ?>" alt="<?php echo htmlspecialchars($produit['nom']); ?>" class="h-12 w-12 rounded-lg object-cover">
+                                    <img src="../<?php echo htmlspecialchars($produit['image']); ?>" alt="<?php echo htmlspecialchars($produit['nom']); ?>" class="h-12 w-12 rounded-lg object-cover">
                                 <?php else: ?>
                                     <div class="h-12 w-12 rounded-lg bg-gray-200 flex items-center justify-center">
                                         <i class="fas fa-image text-gray-400"></i>
@@ -664,7 +663,7 @@ $cart_count = getCartCount($pdo);
             const previewImg = document.getElementById('previewImg');
             
             if (imagePath && imagePath.trim() !== '') {
-                previewImg.src = imagePath;
+                previewImg.src = '../' + imagePath;
                 previewDiv.classList.remove('hidden');
             } else {
                 previewDiv.classList.add('hidden');
