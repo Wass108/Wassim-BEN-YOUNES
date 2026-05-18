@@ -5,6 +5,9 @@ Application e-commerce de gestion et vente de luminaires, développée en PHP av
 ## 📌 Présentation
 
 Ce projet permet de gérer un catalogue de produits d'éclairage, d'afficher des catégories, de proposer un panier client, et d'administrer les produits via une interface de back-office.
+video démo : 
+https://www.youtube.com/watch?v=GG4ruhHfAPE
+
 
 ## 🚀 Fonctionnalités principales
 
